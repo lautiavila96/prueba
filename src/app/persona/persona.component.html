@@ -1,0 +1,28 @@
+<div>
+    <form [formGroup]="personaForm" name="personaForm">
+       
+        <input type="text" [formControl]="nombre"><br>
+        <input type="text" [formControl]="apellido"><br>
+        <input type="number" [formControl]="edad"><br>    
+    
+    <div formGroupName="direccion">
+        <input type="text" [formControl]="calle"><br>
+        <input type="text" [formControl]="numero"><br>
+    </div>
+    <div formArrayName="telefonos">
+        <button (click)="agregar telefono()">Agregar telefono</button>
+        <div *ngFor="let telefono of telefonos.controls; let i = index">
+            <input type="text" [formControlName]="i">
+        </div>
+    </div>
+
+        <button (click)="cambiarNombre()">Cambiar Nombre</button>
+
+        Form Persona: {{personaForm.value | json}}
+
+        <!--<input type="text" formControlName="nombre">
+        <input type="text" formControlName="apellido">
+        <input type="number" formControlName="edad" /> -->
+        
+    </form>
+</div>
